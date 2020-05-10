@@ -1,5 +1,5 @@
-const getParametersWithEmptyValues = (tools, config) => {
-  return Object.entries(config).reduce(
+const getParametersWithEmptyValues = (tools, schema) => {
+  return Object.entries(schema).reduce(
     (acc, [parameter, parameterConfig]) => {
       if (!parameterConfig.required) {
         return acc;
@@ -15,8 +15,8 @@ const getParametersWithEmptyValues = (tools, config) => {
   );
 };
 
-const getParametersWithInvalidValues = (tools, config) => {
-  return Object.entries(config).reduce(
+const getParametersWithInvalidValues = (tools, schema) => {
+  return Object.entries(schema).reduce(
     (acc, [parameter, parameterConfig]) => {
       if (!parameterConfig.availableValues) {
         return acc;
@@ -38,10 +38,10 @@ const getParametersWithInvalidValues = (tools, config) => {
 /**
  * Validate correct parameters of the action
  * @param {import('actions-toolkit').Toolkit} tools
- * @param {object} config
+ * @param {object} schema
  */
-module.exports = (tools, config) => {
-  const parametersWithEmptyValues = getParametersWithEmptyValues(tools, config);
+module.exports = (tools, schema) => {
+  const parametersWithEmptyValues = getParametersWithEmptyValues(tools, schema);
 
   if (parametersWithEmptyValues.length !== 0) {
     tools.exit.failure(
@@ -51,7 +51,7 @@ module.exports = (tools, config) => {
     );
   }
 
-  const parametersWithInvalidValues = getParametersWithInvalidValues(tools, config);
+  const parametersWithInvalidValues = getParametersWithInvalidValues(tools, schema);
 
   if (parametersWithInvalidValues.length !== 0) {
     tools.exit.failure(
