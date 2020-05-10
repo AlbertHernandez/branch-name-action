@@ -3,14 +3,20 @@ require('dotenv').config();
 const { Toolkit } = require('actions-toolkit');
 
 const runAction = require('./src/run-action');
-const validateRequiredParameters = require('./src/validations/validate-required-parameters');
+const validateRequiredParameters = require('./src/validations/validate-parameters');
 
 Toolkit.run(
   async tools => {
     tools.log.info('Validating required parameters...');
-    validateRequiredParameters(tools, [
-      'branch_pattern',
-    ]);
+    validateRequiredParameters(tools, {
+      branch_pattern: {
+        required: true,
+      },
+      fail_if_wrong_branch_name: {
+        required: false,
+        availableValues: ['true', 'false'],
+      },
+    });
 
     try {
       tools.log.info('Running the action...');

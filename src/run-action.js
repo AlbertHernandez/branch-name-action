@@ -12,7 +12,7 @@ module.exports = async tools => {
   if (match) {
     tools.log.info('match yes!');
   } else {
-    await writeComment(tools, commentForWrongBranchName.split('\n').join('\n'));
+    await writeComment(tools, commentForWrongBranchName);
     tools.log.info('match false!');
   }
 };
