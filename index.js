@@ -8,7 +8,7 @@ const parametersSchema = require('./src/parameters-schema');
 
 Toolkit.run(
   async tools => {
-    tools.log.info('Validating required parameters...');
+    tools.log.info('Validating parameters...');
     validateParameters(tools, parametersSchema);
 
     try {
@@ -21,6 +21,7 @@ Toolkit.run(
   {
     event: [
       'pull_request.opened',
+      'pull_request.synchronize',
     ],
     secrets: ['GITHUB_TOKEN'],
   },
