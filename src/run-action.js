@@ -1,14 +1,12 @@
 const writeComment = require('./github/write-comment');
 
+const DEFAULT_COMMENT = 'The name of this branch is not following the standards of this project!';
+
 module.exports = async tools => {
   const branchPattern = tools.inputs.branch_pattern;
-  tools.log.info('branchPattern: ', branchPattern);
-  tools.log.info('test: ', tools.context.payload.pull_request.head.ref);
+  const branchName = tools.context.payload.pull_request.head.ref;
 
-  const text = 'hello world!';
-  const pattern = '/^hello/';
-
-  const match = new RegExp(pattern).test(text);
+  const match = new RegExp(branchPattern).test(branchName);
 
   if (match) {
     tools.log.info('match yes!');
