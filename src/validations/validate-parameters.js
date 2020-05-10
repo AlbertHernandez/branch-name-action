@@ -42,7 +42,6 @@ const getParametersWithInvalidValues = (tools, config) => {
  */
 module.exports = (tools, config) => {
   const parametersWithEmptyValues = getParametersWithEmptyValues(tools, config);
-  const parametersWithInvalidValues = getParametersWithInvalidValues(tools, config);
 
   if (parametersWithEmptyValues.length !== 0) {
     tools.exit.failure(
@@ -52,6 +51,8 @@ module.exports = (tools, config) => {
     );
   }
 
+  const parametersWithInvalidValues = getParametersWithInvalidValues(tools, config);
+
   if (parametersWithInvalidValues.length !== 0) {
     tools.exit.failure(
       `Some parameters have invalid values: [${parametersWithInvalidValues.join(
@@ -60,5 +61,5 @@ module.exports = (tools, config) => {
     );
   }
 
-  tools.exit.failure('mal');
+  tools.exit.failure('mal: ', tools.inputs);
 };
