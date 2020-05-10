@@ -1,0 +1,12 @@
+name: Write a comment in the PR if your branch is not following a predefined pattern
+on: [pull_request]
+jobs:
+  branch_name:
+    runs-on: ubuntu-latest
+    name: Branch Name
+    steps:
+      - uses: AlbertHernandez/branch-name-action@master
+        with:
+          branch_pattern: 'Hello'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

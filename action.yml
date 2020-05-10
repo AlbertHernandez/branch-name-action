@@ -1,5 +1,9 @@
-name: Working Label
+name: Branch Name
 description: Write a comment in the PR if your branch is not following a predefined pattern
+inputs:
+  branch_pattern:
+    description: 'Pattern that should follow the branch'
+    required: true
 runs:
   using: docker
   image: Dockerfile

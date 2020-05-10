@@ -1,0 +1,28 @@
+{
+  "extends": ["airbnb-base"],
+  "env": {
+    "jest": true,
+    "node": true
+  },
+  "rules": {
+    "no-param-reassign": ["error", { "props": false }],
+    "no-plusplus": "off",
+    "class-methods-use-this": "off",
+    "arrow-body-style": "off",
+    "arrow-parens": "off",
+    "no-underscore-dangle": "off",
+    "object-curly-newline": "off"
+  },
+  "globals": {
+    "describe": true,
+    "expect": true,
+    "test": true,
+    "it": true,
+    "afterAll": true,
+    "afterEach": true,
+    "beforeAll": true,
+    "beforeEach": true,
+    "mountConnected": true,
+    "jest": true
+  }
+}
