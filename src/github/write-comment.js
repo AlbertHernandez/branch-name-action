@@ -4,13 +4,9 @@
  * @param {string} comment
  */
 module.exports = async (tools, comment) => {
-  try {
-    await tools.github.issues.createComment({
-      ...tools.context.repo,
-      issue_number: tools.context.issue.number,
-      body: comment,
-    });
-  } catch (error) {
-    tools.log.info(`Error happens when we was adding the comment: ${error}`);
-  }
+  await tools.github.issues.createComment({
+    ...tools.context.repo,
+    issue_number: tools.context.issue.number,
+    body: comment,
+  });
 };
