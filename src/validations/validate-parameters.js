@@ -60,6 +60,4 @@ module.exports = (tools, schema) => {
       )}]`,
     );
   }
-
-  tools.exit.failure('mal: ', tools.inputs);
 };

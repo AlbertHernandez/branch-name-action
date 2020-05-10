@@ -6,4 +6,7 @@ module.exports = {
     required: false,
     availableValues: ['true', 'false'],
   },
+  comment_for_wrong_branch_name: {
+    required: false,
+  },
 };

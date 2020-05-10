@@ -4,15 +4,19 @@ const DEFAULT_COMMENT_FOR_WRONG_BRANCH_NAME = 'The name of this branch is not \n
 
 module.exports = async tools => {
   const branchPattern = tools.inputs.branch_pattern;
+  const failIfWrongBranchName = tools.inputs.fail_if_wrong_branch_name;
   const commentForWrongBranchName = tools.inputs.comment_for_wrong_branch_name || DEFAULT_COMMENT_FOR_WRONG_BRANCH_NAME;
   const branchName = tools.context.payload.pull_request.head.ref;
 
-  const match = new RegExp(branchPattern).test(branchName);
+  const isCorrectBranchName = new RegExp(branchPattern).test(branchName);
 
-  if (match) {
-    tools.log.info('match yes!');
-  } else {
-    await writeComment(tools, commentForWrongBranchName);
-    tools.log.info('match false!');
+  if (isCorrectBranchName) {
+    return;
+  }
+
+  await writeComment(tools, commentForWrongBranchName);
+
+  if (failIfWrongBranchName) {
+    tools.exit.failure();
   }
 };
