@@ -16,7 +16,7 @@ Toolkit.run(
       tools.log.info('Running the action...');
       await runAction(tools);
     } catch (error) {
-      tools.log.info('Unexpected error happens when action was running: ', error);
+      tools.log.info('Unexpected error happened when action was running: ', error);
     }
   },
   {
