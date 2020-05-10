@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Branch Name
     steps:
-      - uses: AlbertHernandez/branch-name-action@master
+      - uses: AlbertHernandez/branch-name-action
         with:
           branch_pattern: 'Hello'
     env:
