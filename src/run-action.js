@@ -1,6 +1,6 @@
 const writeComment = require('./github/write-comment');
 
-const DEFAULT_COMMENT_FOR_WRONG_BRANCH_NAME = 'The name of this branch is not following the standards of this project!';
+const DEFAULT_COMMENT_FOR_WRONG_BRANCH_NAME = 'The name of this branch is not \n following the standards of this project!';
 
 module.exports = async tools => {
   const branchPattern = tools.inputs.branch_pattern;
@@ -12,7 +12,7 @@ module.exports = async tools => {
   if (match) {
     tools.log.info('match yes!');
   } else {
-    await writeComment(tools, commentForWrongBranchName.split('\n').join('\n'));
+    await writeComment(tools, DEFAULT_COMMENT_FOR_WRONG_BRANCH_NAME.split('\n').join('\n'));
     tools.log.info('match false!');
   }
 };
