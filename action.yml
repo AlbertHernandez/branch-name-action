@@ -4,6 +4,9 @@ inputs:
   branch_pattern:
     description: 'Pattern that should follow the branch'
     required: true
+  comment_for_wrong_branch_name:
+    description: 'Comment to write when the branch is not following the pattern'
+    required: false
 runs:
   using: docker
   image: Dockerfile
