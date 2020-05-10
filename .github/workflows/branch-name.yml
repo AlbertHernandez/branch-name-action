@@ -7,8 +7,9 @@ jobs:
     steps:
       - uses: AlbertHernandez/branch-name-action@test/branch-name-action
         with:
-          branch_pattern: 'test/'
-          comment_for_wrong_branch_name: 'Ups! This branch name is not following the standards! \n You can see them here: http://google.com'
-          fail_if_wrong_branch_name: 'false'
+          branch_pattern: 'paco/'
+          comment_for_invalid_branch_name: 'Ups! This branch name is not following the standards! \n You can see them here: http://google.com'
+          fail_if_invalid_branch_name: 'false'
+          ignore_branch_pattern: 'test'
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
