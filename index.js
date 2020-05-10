@@ -13,7 +13,7 @@ Toolkit.run(
         required: true,
       },
       fail_if_wrong_branch_name: {
-        required: false,
+        required: true,
         availableValues: ['true', 'false'],
       },
     });
