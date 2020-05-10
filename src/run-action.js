@@ -22,7 +22,7 @@ module.exports = async tools => {
     return;
   }
 
-  tools.log.info('This branch has a invalid name');
+  tools.log.info('This branch has an invalid name');
 
   await writeComment(tools, commentForInvalidBranchName);
 
