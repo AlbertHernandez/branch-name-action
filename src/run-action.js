@@ -9,12 +9,14 @@ module.exports = async tools => {
   const commentForInvalidBranchName = tools.inputs.comment_for_invalid_branch_name || DEFAULT_COMMENT_FOR_INVALID_BRANCH_NAME;
   const branchName = tools.context.payload.pull_request.head.ref;
 
-  const isIgnoredBranch = new RegExp(ignoreBranchPattern).test(branchName);
   const isValidBranchName = new RegExp(branchPattern).test(branchName);
 
-  if (isIgnoredBranch) {
-    tools.log.info('This branch should be ignored');
-    return;
+  if (ignoreBranchPattern) {
+    const isIgnoredBranch = new RegExp(ignoreBranchPattern).test(branchName);
+    if (isIgnoredBranch) {
+      tools.log.info('This branch should be ignored');
+      return;
+    }
   }
 
   if (isValidBranchName) {
