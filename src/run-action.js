@@ -16,7 +16,7 @@ module.exports = async tools => {
 
   await writeComment(tools, commentForWrongBranchName);
 
-  if (failIfWrongBranchName) {
+  if (failIfWrongBranchName === 'true') {
     tools.exit.failure();
   }
 };
