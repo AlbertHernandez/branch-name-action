@@ -1,0 +1,19 @@
+{
+  "name": "branch-name",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "actions-toolkit": "^4.0.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.2.7"
+  }
+}

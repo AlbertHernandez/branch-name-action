@@ -1,0 +1,8 @@
+name: Working Label
+description: Write a comment in the PR if your branch is not following a predefined pattern
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: user
+  color: green
