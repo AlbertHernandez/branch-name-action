@@ -1,5 +1,7 @@
 name: Write a comment in the PR if your branch is not following a predefined pattern
-on: [pull_request]
+on:
+  pull_request:
+    types: [opened]
 jobs:
   branch_name:
     runs-on: ubuntu-latest
