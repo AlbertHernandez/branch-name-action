@@ -22,7 +22,11 @@ const getParametersWithInvalidValues = (tools, config) => {
         return acc;
       }
 
-      if (parameterConfig.availableValues.includes(tools.inputs[parameter])) {
+      if (!parameterConfig.required && !tools.inputs[parameter]) {
+        return acc;
+      }
+
+      if (!parameterConfig.availableValues.includes(tools.inputs[parameter])) {
         acc.push(parameter);
       }
 
@@ -55,4 +59,6 @@ module.exports = (tools, config) => {
       )}]`,
     );
   }
+
+  tools.exit.failure('mal');
 };
