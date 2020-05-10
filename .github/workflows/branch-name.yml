@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Branch Name
     steps:
-      - uses: AlbertHernandez/branch-name-action@master
+      - uses: AlbertHernandez/branch-name-action@v1
         with:
           branch_pattern: 'feature|bug|chore|hotfix'
           comment_for_invalid_branch_name: 'Ups! This branch name is not following the standards! You can see them here: https://github.com/AlbertHernandez'

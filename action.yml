@@ -2,10 +2,16 @@ name: Branch Name
 description: Write a comment in the PR if your branch is not following a predefined pattern
 inputs:
   branch_pattern:
-    description: 'Pattern that should follow the branch'
+    description: 'Pattern that should follow the names of the branches'
     required: true
-  comment_for_wrong_branch_name:
-    description: 'Comment to write when the branch is not following the pattern'
+  comment_for_invalid_branch_name:
+    description: 'Comment that will be written if the branch name does not follow the branch pattern'
+    required: false
+  fail_if_invalid_branch_name:
+    description: 'If its true the the action will fail if the branch does not follow the branch pattern'
+    required: false
+  ignore_branch_pattern:
+    description: 'Pattern of the branches names where this action will be no executed'
     required: false
 runs:
   using: docker
