@@ -43,7 +43,7 @@ const getParametersWithInvalidValues = (tools, schema) => {
 module.exports = (tools, schema) => {
   const parametersWithEmptyValues = getParametersWithEmptyValues(tools, schema);
 
-  if (parametersWithEmptyValues.length !== 0) {
+  if (parametersWithEmptyValues.length) {
     tools.exit.failure(
       `You forgot to provide some required values: [${parametersWithEmptyValues.join(
         ', ',
@@ -53,7 +53,7 @@ module.exports = (tools, schema) => {
 
   const parametersWithInvalidValues = getParametersWithInvalidValues(tools, schema);
 
-  if (parametersWithInvalidValues.length !== 0) {
+  if (parametersWithInvalidValues.length) {
     tools.exit.failure(
       `Some parameters have invalid values: [${parametersWithInvalidValues.join(
         ', ',
