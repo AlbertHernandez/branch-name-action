@@ -4,19 +4,12 @@ const { Toolkit } = require('actions-toolkit');
 
 const runAction = require('./src/run-action');
 const validateParameters = require('./src/validations/validate-parameters');
+const parametersSchema = require('./src/parameters-schema');
 
 Toolkit.run(
   async tools => {
     tools.log.info('Validating required parameters...');
-    validateParameters(tools, {
-      branch_pattern: {
-        required: true,
-      },
-      fail_if_wrong_branch_name: {
-        required: false,
-        availableValues: ['true', 'false'],
-      },
-    });
+    validateParameters(tools, parametersSchema);
 
     try {
       tools.log.info('Running the action...');
