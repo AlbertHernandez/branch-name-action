@@ -8,12 +8,11 @@ module.exports = async tools => {
   const branchName = tools.context.payload.pull_request.head.ref;
 
   const match = new RegExp(branchPattern).test(branchName);
-  const comment = 'Ups! Tests!\nYou can see them here: http://google.com';
 
   if (match) {
     tools.log.info('match yes!');
   } else {
-    await writeComment(tools, comment);
+    await writeComment(tools, `${commentForWrongBranchName}`);
     tools.log.info('match false!');
   }
 };
