@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: AlbertHernandez/branch-name-action@test/branch-name-action
         with:
-          branch_pattern: 'Hello'
+          branch_pattern: 'test'
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
