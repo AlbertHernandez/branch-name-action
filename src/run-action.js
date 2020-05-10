@@ -5,9 +5,9 @@ module.exports = async tools => {
   tools.log.info('branchPattern: ', branchPattern);
 
   const text = 'hello world!';
-  const regexp = '/^hello/';
+  const pattern = '/^hello/';
 
-  const match = regexp.test(text);
+  const match = new RegExp(pattern).test(text);
 
   if (match) {
     tools.log.info('match yes!');
