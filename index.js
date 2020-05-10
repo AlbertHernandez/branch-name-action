@@ -12,8 +12,12 @@ Toolkit.run(
       'branch_pattern',
     ]);
 
-    tools.log.info('Running the action...');
-    await runAction(tools);
+    try {
+      tools.log.info('Running the action...');
+      await runAction(tools);
+    } catch (error) {
+      tools.log.info('Unexpected error happens when action was running: ', error);
+    }
   },
   {
     event: [
