@@ -3,22 +3,24 @@ require('dotenv').config();
 const { Toolkit } = require('actions-toolkit');
 
 const runAction = require('./src/run-action');
-const validateRequiredParameters = require('./src/validations/validate-required-parameters');
+const validateParameters = require('./src/validations/validate-parameters');
+const parametersSchema = require('./src/parameters-schema');
 
 Toolkit.run(
   async tools => {
-    tools.log.info('Validating required parameters...');
-    validateRequiredParameters(tools, [
-      'branch_pattern',
-    ]);
+    tools.log.info('Validating parameters...');
+    validateParameters(tools, parametersSchema);
 
-    tools.log.info('Running the action...');
-    await runAction(tools);
+    try {
+      tools.log.info('Running the action...');
+      await runAction(tools);
+    } catch (error) {
+      tools.log.info('Unexpected error happened when action was running: ', error);
+    }
   },
   {
     event: [
       'pull_request.opened',
-      'pull_request.edited',
       'pull_request.synchronize',
     ],
     secrets: ['GITHUB_TOKEN'],
