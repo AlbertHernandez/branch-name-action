@@ -3,7 +3,7 @@ const writeComment = require('./github/write-comment');
 module.exports = async tools => {
   const branchPattern = tools.inputs.branch_pattern;
   tools.log.info('branchPattern: ', branchPattern);
-  tools.log.info('test: ', tools.context.ref);
+  tools.log.info('test: ', tools.context);
 
   const text = 'hello world!';
   const pattern = '/^hello/';
