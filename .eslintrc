@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb-base", "airbnb-typescript/base"],
   "env": {
     "jest": true,
     "node": true
@@ -11,7 +11,9 @@
     "arrow-body-style": "off",
     "arrow-parens": "off",
     "no-underscore-dangle": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "max-len": ["error", { "code": 150 }],
+    "@typescript-eslint/indent": ["error", 4]
   },
   "globals": {
     "describe": true,
@@ -24,5 +26,8 @@
     "beforeEach": true,
     "mountConnected": true,
     "jest": true
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
   }
 }

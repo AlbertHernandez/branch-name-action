@@ -1,4 +1,6 @@
-export const parametersSchema = {
+import { ParametersSchema } from "./schema.models";
+
+export const parametersSchema: ParametersSchema = {
   branch_pattern: {
     required: true,
   },
