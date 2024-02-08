@@ -1,4 +1,4 @@
-module.exports = {
+export const parametersSchema = {
   branch_pattern: {
     required: true,
   },
