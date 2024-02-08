@@ -1,5 +1,6 @@
-name: Branch Name
-description: Write a comment in the PR if your branch is not following a predefined pattern
+name: Branch Name Checker
+description: Check if the branch name follows the pattern
+
 inputs:
   branch_pattern:
     description: 'Pattern that should follow the names of the branches'
@@ -13,9 +14,11 @@ inputs:
   ignore_branch_pattern:
     description: 'Pattern of the branches names where this action will be no executed'
     required: false
+
 runs:
-  using: docker
-  image: Dockerfile
+  using: node20
+  main: 'prueba/index.js'
+
 branding:
-  icon: user
+  icon: check-circle
   color: green

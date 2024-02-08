@@ -13,3 +13,4 @@ lerna-debug.log*
 __tests__/runner/*
 lib/**/*
 dist
+.secrets

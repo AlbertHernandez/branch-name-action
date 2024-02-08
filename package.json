@@ -1,7 +1,7 @@
 {
   "name": "branch-name-checker",
   "private": true,
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "node ./index.js",
     "build": "tsc",
