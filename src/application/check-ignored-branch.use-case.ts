@@ -9,5 +9,9 @@ import { ActionParams } from '../domain/action-params.model';
  * @returns True if the branch should be ignored, false otherwise
  */
 export default function isBranchIgnored(branchName: string, actionParams: ActionParams): boolean {
-    return actionParams.ignoreBranchPattern && new RegExp(actionParams.ignoreBranchPattern).test(branchName);
+    if (typeof actionParams.ignoreBranchPattern === 'string' && actionParams.ignoreBranchPattern.trim() !== '') {
+        return new RegExp(actionParams.ignoreBranchPattern).test(branchName);
+    }
+
+    return false;
 }

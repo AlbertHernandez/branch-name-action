@@ -8,7 +8,8 @@ import { ActionParams } from '../domain/action-params.model';
  *
  * @returns Action parameters
  */
-export default function createActionParams(inputs: InputType): ActionParams {
+export default function createActionParams(inputs: InputType): ActionParams | null {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     const { branch_pattern, fail_if_invalid_branch_name, ignore_branch_pattern, comment_for_invalid_branch_name } = inputs;
 
     if (!branch_pattern || !fail_if_invalid_branch_name || !ignore_branch_pattern || !comment_for_invalid_branch_name) {

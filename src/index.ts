@@ -36,7 +36,7 @@ Toolkit.run(
             }
 
             // Create action parameters
-            const actionParams: ActionParams = createActionParams(inputs);
+            const actionParams: ActionParams | null = createActionParams(inputs);
 
             if (!actionParams) {
                 log.error('❌ No parameters were provided');

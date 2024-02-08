@@ -4,7 +4,10 @@ import { ParametersSchema } from '../domain/schema.models';
 /**
  * Get parameters with invalid values
  *
- * @param toolkit GitHub Action Toolkit
+ * @param inputs GitHub Action inputs
+ * @param schema The parameters schema
+ *
+ * @returns The parameters with invalid values
  */
 export default function getParametersWithInvalidValues(inputs: InputType, schema: ParametersSchema): string[] {
     return Object.entries(schema).reduce<string[]>((acc, [parameter, parameterConfig]) => {
