@@ -1,5 +1,29 @@
 {
-  "extends": ["airbnb-base"],
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/extensions": [".ts"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      },
+      "node": {
+        "extensions": [".ts"]
+      }
+    }
+  },
   "env": {
     "jest": true,
     "node": true
@@ -11,7 +35,10 @@
     "arrow-body-style": "off",
     "arrow-parens": "off",
     "no-underscore-dangle": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "indent": ["error", 4],
+    "@typescript-eslint/indent": ["error", 4],
+    "max-len": ["error", { "code": 150 }]
   },
   "globals": {
     "describe": true,

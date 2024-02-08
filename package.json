@@ -1,19 +1,23 @@
 {
-  "name": "branch-name",
+  "name": "branch-name-checker",
   "private": true,
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
+    "build": "tsc",
     "test": "jest --coverage"
   },
   "dependencies": {
-    "actions-toolkit": "^4.0.0",
-    "dotenv": "^8.2.0"
+    "actions-toolkit": "6.0.1"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "jest": "^25.2.7"
+    "@typescript-eslint/eslint-plugin": "6.21.0",
+    "@typescript-eslint/parser": "6.21.0",
+    "eslint": "8.56.0",
+    "eslint-config-airbnb-typescript": "17.1.0",
+    "eslint-import-resolver-typescript": "3.6.1",
+    "eslint-plugin-import": "2.29.1",
+    "jest": "29.7.0",
+    "typescript": "5.3.3"
   }
 }
