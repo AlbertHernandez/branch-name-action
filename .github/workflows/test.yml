@@ -7,7 +7,7 @@ on:
 jobs:
   branch_name:
     runs-on: ubuntu-latest
-    name: Branch Name
+    name: Branch Name checker
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -18,5 +18,5 @@ jobs:
         uses: ./
         with:
           branch_pattern: 'feature|bug|chore|hotfix'
-          comment_for_invalid_branch_name: 'Ups! This branch name is not following the standards! You can see them here: https://github.com/AlbertHernandez'
+          comment_for_invalid_branch_name: 'Ups! This branch name is not following the standards!'
           fail_if_invalid_branch_name: 'false'

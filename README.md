@@ -37,6 +37,3 @@ jobs:
 | comment_for_invalid_branch_name | Comment that will be written if the branch name does not follow the branch pattern | false | The name of this branch is not \n following the standards of this project! |
 | fail_if_invalid_branch_name | If its true the the action will fail if the branch does not follow the branch pattern | false | false |
 | ignore_branch_pattern | Pattern of the branches names where this action will be no executed | false | |
-
-
-gh act --secret-file .secrets -P ubuntu-latest=catthehacker/ubuntu:act-latest

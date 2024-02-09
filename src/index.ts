@@ -17,7 +17,7 @@ Toolkit.run(
 
             // Check if the event is a pull request
             if (!pullRequest) {
-                log.error('❌ No pull request was found');
+                exit.failure('❌ No pull request was found');
                 return;
             }
 
