@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node ./index.js",
-    "build": "tsc",
+    "build": "node ./build.js",
     "dev": "tsc -w",
     "test": "jest --coverage",
     "test:workflow": "gh act --secret-file .secrets -P ubuntu-latest=catthehacker/ubuntu:act-latest"
