@@ -71,7 +71,7 @@ Toolkit.run(
         }
     },
     {
-        event: ['pull_request.opened'],
+        event: ['pull_request'],
         secrets: ['GITHUB_TOKEN'],
     },
 );

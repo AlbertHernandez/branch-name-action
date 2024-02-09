@@ -6,7 +6,8 @@
     "start": "node ./index.js",
     "build": "tsc",
     "dev": "tsc -w",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:workflow": "gh act --secret-file .secrets -P ubuntu-latest=catthehacker/ubuntu:act-latest"
   },
   "dependencies": {
     "actions-toolkit": "6.0.1",

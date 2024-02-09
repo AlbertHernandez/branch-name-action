@@ -17,7 +17,7 @@ inputs:
 
 runs:
   using: node20
-  main: 'prueba/index.js'
+  main: 'dist/index.js'
 
 branding:
   icon: check-circle
