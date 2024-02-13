@@ -36,9 +36,9 @@
     "arrow-parens": "off",
     "no-underscore-dangle": "off",
     "object-curly-newline": "off",
-    "indent": ["error", 4],
-    "@typescript-eslint/indent": ["error", 4],
-    "max-len": ["error", { "code": 150 }]
+    "indent": ["error", 2],
+    "@typescript-eslint/indent": ["error", 2],
+    "max-len": ["error", { "code": 80 }]
   },
   "globals": {
     "describe": true,

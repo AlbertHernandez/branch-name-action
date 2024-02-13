@@ -1,36 +1,55 @@
 import { Toolkit } from 'actions-toolkit';
 
-const getParametersWithEmptyValues = (tools: Toolkit, schema: Record<any, any>): any => {
-    return Object.entries(schema).reduce<any>((acc, [parameter, parameterConfig]) => {
-        if (!parameterConfig.required) {
-            return acc;
-        }
+export interface ValidationSchema {
+  [key: string]: {
+    required: boolean;
+    availableValues?: string[]
+  }
+}
 
-        if (tools.inputs[parameter]) {
-            return acc;
-        }
+const getParametersWithEmptyValues = (
+  tools: Toolkit,
+  schema: ValidationSchema,
+): string[] => {
+  return Object.entries(schema).reduce<string[]>((
+    acc,
+    [parameter, parameterConfig],
+  ) => {
+    if (!parameterConfig.required) {
+      return acc;
+    }
 
-        acc.push(parameter);
-        return acc;
-    }, []);
+    if (tools.inputs[parameter]) {
+      return acc;
+    }
+
+    acc.push(parameter);
+    return acc;
+  }, []);
 };
 
-const getParametersWithInvalidValues = (tools: Toolkit, schema: Record<any, any>): any => {
-    return Object.entries(schema).reduce<any>((acc, [parameter, parameterConfig]) => {
-        if (!parameterConfig.availableValues) {
-            return acc;
-        }
+const getParametersWithInvalidValues = (
+  tools: Toolkit,
+  schema: ValidationSchema,
+): string[] => {
+  return Object.entries(schema).reduce<string[]>((
+    acc,
+    [parameter, parameterConfig],
+  ) => {
+    if (!parameterConfig.availableValues) {
+      return acc;
+    }
 
-        if (!parameterConfig.required && !tools.inputs[parameter]) {
-            return acc;
-        }
+    if (!parameterConfig.required && !tools.inputs[parameter]) {
+      return acc;
+    }
 
-        if (!parameterConfig.availableValues.includes(tools.inputs[parameter])) {
-            acc.push(parameter);
-        }
+    if (!parameterConfig.availableValues.includes(tools.inputs[parameter])) {
+      acc.push(parameter);
+    }
 
-        return acc;
-    }, []);
+    return acc;
+  }, []);
 };
 
 /**
@@ -38,24 +57,27 @@ const getParametersWithInvalidValues = (tools: Toolkit, schema: Record<any, any>
  * @param {import('actions-toolkit').Toolkit} tools
  * @param {object} schema
  */
-export default async function validateParameters(tools: Toolkit, schema: Record<any, any>): Promise<void> {
-    const parametersWithEmptyValues = getParametersWithEmptyValues(tools, schema);
+export default async function validateParameters(
+  tools: Toolkit,
+  schema: Record<any, any>,
+): Promise<void> {
+  const emptyParams = getParametersWithEmptyValues(tools, schema);
 
-    if (parametersWithEmptyValues.length) {
-        tools.exit.failure(
-            `You forgot to provide some required values: [${parametersWithEmptyValues.join(
-                ', ',
-            )}]`,
-        );
-    }
+  if (emptyParams.length) {
+    tools.exit.failure(
+      `You forgot to provide some required values: [${emptyParams.join(
+        ', ',
+      )}]`,
+    );
+  }
 
-    const parametersWithInvalidValues = getParametersWithInvalidValues(tools, schema);
+  const invalidParams = getParametersWithInvalidValues(tools, schema);
 
-    if (parametersWithInvalidValues.length) {
-        tools.exit.failure(
-            `Some parameters have invalid values: [${parametersWithInvalidValues.join(
-                ', ',
-            )}]`,
-        );
-    }
+  if (invalidParams.length) {
+    tools.exit.failure(
+      `Some parameters have invalid values: [${invalidParams.join(
+        ', ',
+      )}]`,
+    );
+  }
 }
