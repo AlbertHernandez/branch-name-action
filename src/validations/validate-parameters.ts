@@ -1,11 +1,5 @@
 import { Toolkit } from 'actions-toolkit';
-
-export interface ValidationSchema {
-  [key: string]: {
-    required: boolean;
-    availableValues?: string[]
-  }
-}
+import { ValidationSchema } from '../models/validation-schema.model';
 
 const getParametersWithEmptyValues = (
   tools: Toolkit,
