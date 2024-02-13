@@ -59,7 +59,7 @@ const getParametersWithInvalidValues = (
  */
 export default async function validateParameters(
   tools: Toolkit,
-  schema: Record<any, any>,
+  schema: ValidationSchema,
 ): Promise<void> {
   const emptyParams = getParametersWithEmptyValues(tools, schema);
 
