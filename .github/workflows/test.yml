@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Branch Name
     steps:
+      - uses: actions/checkout@v4
       - uses: ./
         with:
           branch_pattern: 'feature|bug|chore|hotfix'
