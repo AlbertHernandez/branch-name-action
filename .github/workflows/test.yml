@@ -2,6 +2,9 @@ name: Write a comment in the PR if your branch is not following a predefined pat
 on:
   pull_request:
     types: [opened]
+
+  workflow_dispatch:
+
 jobs:
   branch_name:
     runs-on: ubuntu-latest
