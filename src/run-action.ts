@@ -1,15 +1,21 @@
-const writeComment = require('./github/write-comment');
+import { Toolkit } from 'actions-toolkit';
+import writeComment from './github/write-comment';
 
+// eslint-disable-next-line max-len
 const DEFAULT_COMMENT_FOR_INVALID_BRANCH_NAME = 'The name of this branch is not \n following the standards of this project!';
 
-module.exports = async tools => {
+export default async function runAction(tools: Toolkit): Promise<void> {
   const branchPattern = tools.inputs.branch_pattern;
   const failIfInvalidBranchName = tools.inputs.fail_if_invalid_branch_name;
   const ignoreBranchPattern = tools.inputs.ignore_branch_pattern;
+  // eslint-disable-next-line max-len
   const commentForInvalidBranchName = tools.inputs.comment_for_invalid_branch_name || DEFAULT_COMMENT_FOR_INVALID_BRANCH_NAME;
-  const branchName = tools.context.payload.pull_request.head.ref;
+  const branchName = tools.context?.payload?.pull_request?.head.ref;
 
-  const isValidBranchName = new RegExp(branchPattern).test(branchName);
+  let isValidBranchName = false;
+  if (branchPattern) {
+    isValidBranchName = new RegExp(branchPattern).test(branchName);
+  }
 
   if (ignoreBranchPattern) {
     const isIgnoredBranch = new RegExp(ignoreBranchPattern).test(branchName);
@@ -31,4 +37,4 @@ module.exports = async tools => {
   if (failIfInvalidBranchName === 'true') {
     tools.exit.failure();
   }
-};
+}
