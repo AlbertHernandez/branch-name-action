@@ -1,7 +1,7 @@
 name: Write a comment in the PR if your branch is not following a predefined pattern
 on:
   pull_request:
-    types: [opened]
+    # types: [opened]
 
   workflow_dispatch:
 
@@ -11,7 +11,9 @@ jobs:
     name: Branch Name
     steps:
       - uses: actions/checkout@v4
-      - uses: ./
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: AlbertHernandez/branch-name-action@mcfdez:chore/change-node-version
         with:
           branch_pattern: 'feature|bug|chore|hotfix'
           comment_for_invalid_branch_name: 'Ups! This branch name is not following the standards! You can see them here: https://github.com/AlbertHernandez'
