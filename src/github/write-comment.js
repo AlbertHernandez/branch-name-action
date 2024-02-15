@@ -6,7 +6,7 @@
 module.exports = async (tools, comment) => {
   await tools.github.issues.createComment({
     ...tools.context.repo,
-    issue_number: tools.context.issue.number,
+    issue_number: tools.context.issue.issue_number,
     body: comment,
   });
 };
